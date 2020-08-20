@@ -19,9 +19,9 @@ global flag := false
 
 ;;info of DB
 host := "127.0.0.1"
-user := "root"
-pw :="1q2w3e4r!"
-database := "user"
+user := "wujsol"
+pw :="wujsol20)^@("
+database := "wujsol"
 
 ;SQL start and connect
 sql_start()
@@ -33,19 +33,19 @@ if(myDB = "error")
 }
 
 ;Encoding usf8 for Korean
-dbQuery(myDB,"set character set ecukr")
+dbQuery(myDB,"set character set utf8")
 
 Return
 
 ;Get Data
 ButtonConfirm:
 {
-    myQuery := "SELECT *FROM user WHERE list_id =='"arr[1]"';"
+    myQuery := "SELECT *FROM user WHERE createtime > CURDATE() LIMIT 5;"
     
     result := dbQuery(myDB, myQuery)
     for index1, arr in result
     {
-        myStr := "list_id : " . arr[1] . ", name : " . arr[2] . ", birth :" . arr[3] . ", its_flag :" . arr[4]
+        myStr := "list_id : " . arr[1] . ", name : " . arr[3] . ", birth :" . arr[5] . ", its_flag :" . arr[12]
         _name := arr[2]
         _birth := arr[3]
         MsgBox % myStr
@@ -57,65 +57,64 @@ Return
 ;Detect process On or OFF
 IfWinExist, DurInfService
 {
-    WinActivate, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ 
+    WinActivate, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸ 
 
 }
 IfWinNotExist, DurInfService
 {
     Run C:\HIRA\HIRAINF\DurInfService.exe
     Sleep, 5000
-    WinActivate, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+    WinActivate, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 }
 
 /*
-;ìš”ì–‘ê¸°ê´€ ê¸°í˜¸
-ControlFocus, Edit1, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
-ControlSendRaw, Edit1, 37100548, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
-
-;ì˜ì‚¬ë©´í—ˆë²ˆí˜¸
-ControlFocus, Edit2, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
-ControlSendRaw, Edit2, 530866, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+;¿ä¾ç±â°ü ±âÈ£
+ControlFocus, Edit1, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
+ControlSendRaw, Edit1, 37100548, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
+;ÀÇ»ç¸éÇã¹øÈ£
+ControlFocus, Edit2, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
+ControlSendRaw, Edit2, 530866, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 */
 
-;ì´ë¦„
-ControlFocus, Edit4, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
-;ControlSend, Edit4, {BackSpace 6}, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+;ÀÌ¸§
+ControlFocus, Edit4, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
+;ControlSend, Edit4, {BackSpace 6}, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 ;Sleep , 1000
-ControlSendRaw, Edit4, %_name%, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+ControlSendRaw, Edit4, %_name%, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 
-;ì£¼ë¯¼ë²ˆí˜¸
-ControlFocus, Edit5, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
-;ControlSend, Edit5, {BackSpace 13}, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+;ÁÖ¹Î¹øÈ£
+ControlFocus, Edit5, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
+;ControlSend, Edit5, {BackSpace 13}, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 ;Sleep, 1000
-ControlSendRaw, Edit5, %_birth%, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+ControlSendRaw, Edit5, %_birth%, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 
-;ì¸ì¦ì„œ í˜¸ì¶œ , ì¸ì¦ì„œ ì„ íƒ
-ControlClick, Button11, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+;ÀÎÁõ¼­ È£Ãâ , ÀÎÁõ¼­ ¼±ÅÃ
+ControlClick, Button11, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 Sleep, 1000
-WinActivate, ì¸ì¦ì„œ ì„ íƒ
+WinActivate, ÀÎÁõ¼­ ¼±ÅÃ
 ControlClick, Edit8 ;HardDIsk
 Sleep, 1000
 
 Try
 {
-    ControlClick, Edit1, ì¸ì¦ì„œ ì„ íƒ
-    ControlFocus, Edit1, ì¸ì¦ì„œ ì„ íƒ
+    ControlClick, Edit1, ÀÎÁõ¼­ ¼±ÅÃ
+    ControlFocus, Edit1, ÀÎÁõ¼­ ¼±ÅÃ
     Sleep, 1000
-    ControlSendRaw, Edit1, !2whospital, ì¸ì¦ì„œ ì„ íƒ
+    ControlSendRaw, Edit1, !2whospital, ÀÎÁõ¼­ ¼±ÅÃ
     Sleep , 2000
-    ControlSend, Edit1, {Enter}, ì¸ì¦ì„œ ì„ íƒ
+    ControlSend, Edit1, {Enter}, ÀÎÁõ¼­ ¼±ÅÃ
     Sleep , 1000
 }
 catch {}
 
-ControlGet, OutputVar, List, , SysListView321, ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+ControlGet, OutputVar, List, , SysListView321, °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 Sleep, 1000
-IfInString, OutputVar, ë¹„ëŒ€ìƒì
+IfInString, OutputVar, ºñ´ë»óÀÚ
     flag := false
 else
-    flag := true
+    flag := true 
 
-ControlClick, Button4,  ê°ì—¼ë³‘ ì˜¤ì—¼ì§€ì—­ ë°©ë¬¸ì ì¡°íšŒ
+ControlClick, Button4,  °¨¿°º´ ¿À¿°Áö¿ª ¹æ¹®ÀÚ Á¶È¸
 
 
 ;Update Data
